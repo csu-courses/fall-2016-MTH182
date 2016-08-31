@@ -7,9 +7,11 @@
 
 \begin{document}
 \begin{abstract}
-  We can also use integrals to compute volume.
+  We can also use integrals to compute volume and mass.
 \end{abstract}
 \maketitle
+
+\section{Volume}
 
 We have seen how to compute certain areas by using integration. Now we
 will see how to compute some volumes.  The volumes that we can compute
@@ -45,6 +47,8 @@ and $20$ meters on a side at the base.
     \end{axis}
   \end{tikzpicture}
 \end{image}
+
+
 
 \begin{explanation}
 To solve this problem, we will ``sum up'' (integrate) infinitely many
@@ -109,6 +113,10 @@ So the total volume is given by the integral:
 We can evaluate this integral:
 
 \vspace{1 in}
+
+\end{explanation}
+
+\end{question}
 
 \newpage
 
@@ -223,6 +231,49 @@ We can evaluate this integral:
 
 
 \end{explanation}
+\end{question}
+
+\section{Density and Mass}
+
+Given an object which can be modeled as one-dimensional (like a wire),
+its \dfn{linear density} is a measure of its mass per unit length.
+
+\begin{question}
+	If a wire has linear density $5 \unit{g}/\unit{m}$, how many grams
+	will $4 \unit{m}$ of this wire be?
+	
+	\[
+	\mathrm{Mass} = 
+	\]
+	
+\end{question}
+
+Sometimes the linear density of an object can vary from one part of
+the object to another. In this case density will be a function, that
+is usually represented by the Greek letter, \textit{rho}, $\rho$:
+\[
+\rho(x) = \text{density with respect to position.}
+\]
+
+In this case, we can think of breaking the object up into infinitesminal sections of length $dx$. 
+The mass of each segment will be $\rho(x) \d x$, and we want to sum these from the initial point $x=a$ to $x=b$.  
+
+Thus
+
+\[
+\mathrm{Mass} = \int_{a}^{b} \rho(x) \d x
+\]
+where $a$ is the starting position and $b$ is the ending position.
+
+\begin{question}
+	If the linear density of a rod of length $5\unit{m}$ is given by
+	$\rho(x) = 1+3x^2 \unit{g}/\unit{m}$, where $x$ is the distance from
+	one end of the rod, then what is total mass of the rod?
+	\begin{prompt}
+		\[
+		\mathrm{Mass} = \answer{130} \unit{g}
+		\]
+	\end{prompt}
 \end{question}
 
 

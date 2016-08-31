@@ -1,0 +1,64 @@
+\documentclass[handout]{ximera}
+\input{../../preamble}
+
+\title{Quiz 1}
+
+\begin{document}
+\begin{abstract}
+This quiz covers integral calculus from 181
+\end{abstract}
+\maketitle
+
+
+\begin{question}
+	
+	(3 points)	(No work needed)
+		
+		The general antiderivative of $x^4 + \sin(x)$ is 
+	\end{question}
+	
+\begin{question}
+	
+	(4 points)	(Show all your work)
+	
+	\[\int_1^2 \frac{24-4z}{\sqrt{z}} \d z = \]
+	\vspace{4.5 in}
+\end{question}
+
+
+
+\begin{question}
+	
+	(3 points)	(Show all your work)
+	
+	The graph of a function $f$ is shown below.  Suppose that $F$ is an antiderivative of $f$.   Is $F$ increasing or decreasing at $x=1$?  Explain why you think so.
+	
+		\begin{image}
+			\begin{tikzpicture}
+			\begin{axis}[
+			domain=-5:5, ymax=10,xmax=4,ymin=-5, xmin=-4,
+			axis lines =center, xlabel=$x$, ylabel=$y$,
+			xtick={-4,-3,-2,-1,0,1,2,3,4},
+			%xticklablels={a},
+			%ticks=none,
+			every axis y label/.style={at=(current axis.above origin),anchor=south},
+			every axis x label/.style={at=(current axis.right of origin),anchor=west},
+			axis on top,
+			]
+			
+			\addplot [draw=penColor,very thick] {(x+1)*(x-2)};
+			\node at (axis cs:3,7) [penColor] {$f$};
+			
+			
+			\end{axis}
+			\end{tikzpicture}
+		\end{image}
+		
+			\vspace{4 in}
+\end{question}
+	
+
+
+
+
+\end{document}
