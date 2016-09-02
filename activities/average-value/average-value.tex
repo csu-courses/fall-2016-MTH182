@@ -2,14 +2,218 @@
 
 \input{../../preamble.tex}
 
-
-\title{Average Value}
-
+\title[Dig-In:]{Applications of integrals}
 \begin{document}
-\begin{abstract}
-	We can calculate the average value of a function using integration
-\end{abstract}
-\maketitle
+	\begin{abstract}
+		We give more contexts to understand integrals.
+	\end{abstract}
+	\maketitle
+	
+	Conceptualizing definite integrals as ``signed area'' works great as
+	long as one can actually visualize the ``area.'' In some cases, a
+	better metaphor for integrals comes from the idea of \textit{average
+		value}.  Looking back to your days as an even younger mathematician,
+	you may recall the idea of an \textit{average}:
+	\[
+	\frac{f_1+f_2+\dots+f_n}{n} = \frac{1}{n}\sum_{k=1}^n f_i
+	\]
+	If we want to know the average value of a function, a naive approach
+	might be to partition the interval $[a,b]$ into $n$ equally spaced
+	subintervals, 
+	\[
+	a=x_0 < x_1 < \dots < x_{n}=b
+	\]
+	and choose any $x_k^*$ in $[x_i,x_{i+1}]$. The average of $f(x_1^*)$,
+	$f(x_2^*)$, \dots, $f(x_n^*)$ is:
+	\[
+	\frac{f(x_1^*) + f(x_2^*) + \dots + f(x_n^*)}{n} = \frac1n\sum_{k=1}^n f(x_k^*).
+	\]
+	Multiply this last expression by $1 = \frac{(b-a)}{(b-a)}$:
+	\begin{align*}
+	\frac1n \sum_{k=1}^n f(x_k^*)\frac{(b-a)}{(b-a)} &= \sum_{k=1}^n f(x_k^*)\frac1n \frac{(b-a)}{(b-a)} \\
+	&= \frac{1}{b-a} \sum_{k=1}^n f(x_k^*)\frac{b-a}n  \\
+	&=\frac{1}{b-a} \sum_{k=1}^n f(x_k^*)\Delta x
+	\end{align*}
+	where $\Delta x = (b-a)/n$.  Ah! On the right we have a Riemann Sum!
+	Now take the limit as $n\to\infty$:
+	\[
+	\lim_{n\to\infty} \frac{1}{b-a} \sum_{k=1}^n f(x_k^*)\Delta x = \frac{1}{b-a} \int_a^b f(x)\d x.
+	\]
+	This leads us to our next definition:
+	
+	\begin{definition}
+		Let $f$ be continuous on $[a,b]$. The \dfn{average value} of $f$ on
+		$[a,b]$ is given by
+		\[
+		\frac{1}{b-a}\int_a^b f(x)\d x.
+		\]
+	\end{definition}
+	
+	The average value of a function gives the height of a single rectangle whose area is equal to
+	\[
+	\int_a^b f(x) \d x
+	\]
+	\begin{image}
+		\begin{tikzpicture}[
+		declare function = {f(\x) = -sin(deg(\x)) + 3;}]
+		\begin{axis}[  
+		domain=-.2:7, xmin =-.2,xmax=7,ymax=5,ymin=-.7,
+		width=6in,
+		height=3in,xtick={1,6},
+		xticklabels={$a$,$b$},
+		ytick style={draw=none},
+		yticklabels={},
+		axis lines=center, xlabel=$x$, ylabel=$y$,
+		every axis y label/.style={at=(current axis.above origin),anchor=south},
+		every axis x label/.style={at=(current axis.right of origin),anchor=west},
+		axis on top,
+		]
+		\foreach \rectnumber in {1}
+		{
+			\addplot [draw=penColor,fill=fillp] plot coordinates
+			{({1+(\rectnumber - 1) * 5},{3.08})
+				({1+(\rectnumber) * 5},{3.08})} \closedcycle;
+		};
+		\addplot [very thick,penColor, smooth] {f(x)};
+		\node[black] at (axis cs:3.5,1.5) {\huge$\int_a^b f(x) \d x$};
+		\end{axis}
+		\end{tikzpicture}
+	\end{image}
+	
+	An application of this definition is given in the next example.
+	
+	
+	\begin{example}
+		An object moves back and forth along a straight line with a velocity
+		given by $v(t) = (t-1)^2$ on $[0,3]$, where $t$ is measured in seconds
+		and $v(t)$ is measured in ft/s.
+		
+		What is the average velocity of the object?
 
 
+\newpage
+	\end{example}
+	
+	
+	
+	When we take the average of a finite set of values, it does not matter
+	how we order those values.  When we are taking the average value of a
+	function, however, we need to be more careful.
+	
+	For instance, there are at least two different ways to make sense of a
+	vague phrase like ``The average height of a point on the unit semi
+	circle''
+	\begin{image}
+		\begin{tikzpicture}[
+		declare function = {f(\x) = sin(deg(\x));}]
+		\begin{axis}[  
+		domain=-3:3, xmin =-1.2,xmax=1.2,ymax=1.2,ymin=-.2,
+		width=6in,
+		height=3in,xtick={-1,1},
+		xticklabels={$-1$, $1$},
+		ytick style={draw=none},
+		yticklabels={},
+		axis lines=center, xlabel=$x$, ylabel=$y$,
+		every axis y label/.style={at=(current axis.above origin),anchor=south},
+		every axis x label/.style={at=(current axis.right of origin),anchor=west},
+		axis on top,
+		]
+		\addplot [penColor, very thick, smooth, domain=(0:180)] ({cos(x)},{sin(x)});
+		\end{axis}
+		\end{tikzpicture}
+	\end{image}
+
+
+\begin{example}	One way we can make sense of ``The average height of a point on the
+	unit semi circle'' is to compute the average value of the function
+	\[
+	f(x) =\sqrt{1-x^2}
+	\]
+	on the interval $[-1,1]$.
+	
+\newpage
+	
+\end{example}
+
+\begin{example}
+	Another way we can make sense of ``The average height of a point on the
+	unit semi circle'' is the average value of the function
+	\[
+	g(\theta) =\sin(\theta)
+	\]
+	on $[0,\pi]$, since $\sin(\theta)$ is the height of the point on the
+	unit circle at the angle $\theta$.
+	
+		See if you can understand intuitively why the average using $f$ should
+		be larger than the average using $g$.
+
+\newpage
+
+	\end{example}
+	
+  %% It is amusing to note that
+	%% since
+	%% \[
+	%% g(x) < f(x)
+	%% \]this
+	%% shows that $\pi^2>8$.
+	
+	
+	
+	\section{Mean value theorem for integrals}
+	
+	Just as we have a Mean Value Theorem for Derivatives, we also have a
+	Mean Value Theorem for Integrals.
+	
+	
+	\begin{theorem}[The Mean Value Theorem for integrals]\index{Mean Value Theorem for integrals}
+		Let $f$ be continuous on $[a,b]$. There exists a value $c$ in $[a,b]$
+		such that
+		\[
+		\int_a^bf(x)\d x = f(c)(b-a).
+		\]
+	\end{theorem}
+	
+	This is an \emph{existential} statement. The Mean Value Theorem for
+	Integrals tells us:
+	\begin{quote}
+		\textbf{The average value of a continuous function is in the range of
+			the function.}
+	\end{quote}
+	
+	We demonstrate the principles involved in this version of the Mean
+	Value Theorem in the following example.
+	
+	\begin{example}%%%BADBAD we state that this is an existential thm, then we ask for the value!
+		Consider $\int_0^\pi \sin x \d x$. Find a value $c$ guaranteed by the Mean Value Theorem.
+		
+		\vspace{1.7 in}
+	
+			A graph of $\sin x$ is sketched along with a rectangle with height
+			$\sin (0.69)$ are pictured below. The area of the rectangle is the
+			same as the area under $\sin x$ on $[0,\pi]$.
+			\begin{image}
+				\begin{tikzpicture}[
+				declare function = {f(\x) = sin(deg(\x));}]
+				\begin{axis}[  
+				domain=-.2:3.3, xmin =-.2,xmax=3.3,ymax=1.2,ymin=-.2,
+				width=6in,
+				height=3in,xtick={3.141,6.282},
+				xticklabels={$\pi$, $2\pi$},
+				ytick style={draw=none},
+				yticklabels={},
+				axis lines=center, xlabel=$x$, ylabel=$y$,
+				every axis y label/.style={at=(current axis.above origin),anchor=south},
+				every axis x label/.style={at=(current axis.right of origin),anchor=west},
+				axis on top,
+				]
+				\addplot [draw=penColor,fill=fillp] plot coordinates
+				{({0},{2/pi})
+					({pi},{2/pi})} \closedcycle;
+				\addplot [very thick,penColor, smooth] {f(x)};
+				
+				\end{axis}
+				\end{tikzpicture}
+			\end{image}
+	\end{example}
 \end{document}
